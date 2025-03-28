@@ -242,8 +242,17 @@ class BluetoothTerminal {
     this._log('Requesting bluetooth device...');
 
     return navigator.bluetooth.requestDevice({
-      // filters: [{services: [this._serviceUuid]}],
-      acceptAllDevices: true,
+      // filters: [{
+      //   services: [this._serviceUuid],
+      // }],
+      optionalServices: [
+            ['7a9c3b55-78d0-44a7-a94e-a93e3fe118ce'],
+            ['23f18142-b389-4772-93bd-52bdbb2c03e9'],
+            ['00001101-0000-1000-8000-00805f9b34fb'],
+            ['00001800-0000-1000-8000-00805f9b34fb'],
+            ['0000180a-0000-1000-8000-00805f9b34fb'],
+            ['49535343-fe7d-4ae5-8fa9-9fafd205e455'],],
+      // acceptAllDevices: true,
     }).
         then((device) => {
           this._log('"' + device.name + '" bluetooth device selected');
